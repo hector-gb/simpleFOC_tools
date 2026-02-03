@@ -93,7 +93,7 @@ void setup() {
 void loop () {
 
   serialLoop();
-  //motor.PID_velocity.P = target;
+  motor.PID_velocity.P = target;
 
   //sensor.update();
   motor.loopFOC();
