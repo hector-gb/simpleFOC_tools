@@ -22,7 +22,7 @@ BLDCDriver3PWM driver = BLDCDriver3PWM(1, 3, 7, 10);
 // Magnetic sensor instance - just for monitoring
 MagneticSensorSPI sensor = MagneticSensorSPI(5, 14, 0x3FFF);
 
-float target = 0.0;
+float target = 0.0f;
 
 void serialLoop() {
   static String received_chars;
@@ -40,10 +40,10 @@ void serialLoop() {
 
 void setup() {
   Serial.begin(115200);
-  delay(200);
+  delay(100);
 
   uint32_t t0 = millis();
-  while (!Serial && (millis() - t0 < 1500)) delay(10);
+  while (!Serial && (millis() - t0 < 3000)) delay(10);
 
   Serial.println("+----------------------------------------------------------+");
   Serial.println("|                      FW INFORMATION                      |");
@@ -61,8 +61,8 @@ void setup() {
   sensor.init();
   motor.linkSensor(&sensor);
 
-  motor.PID_velocity.P = 0.05; // pwm sensor 0.04;
-  motor.PID_velocity.I = 0.5; // pwm sensor 0.5 or 0.2
+  motor.PID_velocity.P = 0.15; // pwm sensor 0.04;
+  motor.PID_velocity.I = 0.3; // pwm sensor 0.5 or 0.2
   motor.PID_velocity.D = 0.0;
   //motor.PID_velocity.output_ramp = 1000;
   motor.LPF_velocity.Tf = 0.01;
@@ -70,7 +70,7 @@ void setup() {
   //Zmotor.P_angle.P = 1;
 
   driver.voltage_power_supply = 12;
-  driver.voltage_limit = 10;
+  driver.voltage_limit = 5;
   driver.init();
   motor.linkDriver(&driver);
 
@@ -101,6 +101,3 @@ void loop () {
   motor.monitor();
   //delay(1);
 }
-
-
-// remote control mac c0:5d:89:9d:5a:60
