@@ -61,8 +61,8 @@ void setup() {
   sensor.init();
   motor.linkSensor(&sensor);
 
-  motor.PID_velocity.P = 0.15; // pwm sensor 0.04;
-  motor.PID_velocity.I = 0.3; // pwm sensor 0.5 or 0.2
+  motor.PID_velocity.P = 0.0; // pwm sensor 0.04;
+  motor.PID_velocity.I = 0.0; // pwm sensor 0.5 or 0.2
   motor.PID_velocity.D = 0.0;
   //motor.PID_velocity.output_ramp = 1000;
   motor.LPF_velocity.Tf = 0.01;
@@ -93,11 +93,11 @@ void setup() {
 void loop () {
 
   serialLoop();
-  //motor.PID_velocity.I = target;
+  //motor.PID_velocity.P = target;
 
   //sensor.update();
   motor.loopFOC();
-  motor.move(target);
+  motor.move(5);
   motor.monitor();
   //delay(1);
 }
