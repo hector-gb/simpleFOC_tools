@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "RemoteControlFFB",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
