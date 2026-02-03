@@ -62,7 +62,7 @@ void setup() {
   motor.linkSensor(&sensor);
 
   motor.PID_velocity.P = 0.04; // pwm sensor 0.04;
-  motor.PID_velocity.I = 0.0; // pwm sensor 0.5 or 0.2
+  motor.PID_velocity.I = 0.5; // pwm sensor 0.5 or 0.2
   motor.PID_velocity.D = 0.0;
   //motor.PID_velocity.output_ramp = 1000;
   motor.LPF_velocity.Tf = 0.01;
